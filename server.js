@@ -3,7 +3,7 @@ let express = require("express");
 // Sets up the Express App
 // =============================================================
 let app = express();
-let PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 // Requiring our models for syncing
 let db = require("./models");
@@ -24,8 +24,8 @@ require("./routes/goal-api-routes.js")(app);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 // db.sequelize.sync({ force: true }).then(function() {
-db.sequelize.sync().then(function() { 
-  app.listen(process.env.PORT || 8080, function() {
-    console.log("App listening on localhost:" + PORT);
+db.sequelize.sync().then(function () {
+  server.listen(port, () => {
+    console.log("App is running on port " + port);
   });
 });
