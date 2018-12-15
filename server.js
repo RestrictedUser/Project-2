@@ -25,7 +25,7 @@ require("./routes/goal-api-routes.js")(app);
 // =============================================================
 // db.sequelize.sync({ force: true }).then(function() {
 db.sequelize.sync().then(function() { 
-  app.listen(PORT, function() {
+  app.listen(process.env.PORT || 8080, function() {
     console.log("App listening on localhost:" + PORT);
   });
 });
