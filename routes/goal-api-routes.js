@@ -44,6 +44,19 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/goaldata", function(req, res) {
+    db.GoalData.create(req.body).then(function(dbGoal) {
+      res.json(dbGoal);
+    });
+  });
+
+  app.get("/api/goaldata", function(req, res) {
+    db.GoalData.findAll().then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+
   // DELETE route for deleting posts
   app.delete("/api/goals/:id", function(req, res) {
     db.Goal.destroy({
@@ -67,4 +80,6 @@ module.exports = function(app) {
       res.json(dbGoal);
     });
   });
+
+
 };

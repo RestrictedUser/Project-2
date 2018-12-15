@@ -16,11 +16,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "port": 3306,
+    "use_env_variable": "mysql://gf4xo0opv7r38jyf:w1on6cowp8e3gwb3@ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/v8rgjd5go210yb4o",
     "dialect": "mysql"
   }
 }

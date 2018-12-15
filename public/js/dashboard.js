@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("#addWeightForm").fadeOut();
     var goalName = $("#goal_name");
     var goalWeight = $("#goal_weight");
     var timeFrameAmount = $("#time_frame_amount");
@@ -30,10 +31,6 @@ $(document).ready(function () {
         window.location.href = "/dashboard/" + id
     }
 
-
-
-
-
     // dashboard profile
     let tableUserName = $("#tableUserName")
     let tableFirstName = $("#tableFirstName")
@@ -45,15 +42,41 @@ $(document).ready(function () {
     let tableWeight = $("#tableWeight")
 
     $.get("/api/users/" + id, function (data) {
-        // console.log(data[0])
+        console.log(data[0])
         tableUserName.html(data[0].username)
         tableFirstName.html(data[0].firstName)
         tableLastName.html(data[0].lastName)
         tableEmail.html(data[0].email)
-        tableBirthday.html(data[0].birthdate.substring(0,10))
+        tableBirthday.html(data[0].birthdate.substring(0, 10))
         tableGender.html(data[0].gender)
         tableHeight.html(data[0].heightFeet + "' " + data[0].heightInches + '"')
         tableWeight.html(data[0].weight)
-
     });
+
+    $(document).on("click", "#showForm", showform)
+
+    function showform(event) {
+        event.preventDefault();
+        $("#addWeightForm").fadeIn();
+    }
+
+    $(document).on("click", "#submitNewWeight", addWeightHideForm)
+
+    function addWeightHideForm() {
+        event.preventDefault();
+        let new_goal_weight = $("#new_goal_weight")
+        upsertUser({
+            weight: new_goal_weight.val().trim(),
+        });
+
+        function upsertUser(userData) {
+            $.post("/api/goaldata", userData);
+            $.get("/api/goaldata", function (data) {
+                console.log(data[0])
+            });
+        }
+        
+        $("#addWeightForm").fadeOut();
+    }
+
 })
