@@ -19,7 +19,7 @@
     "username": "gf4xo0opv7r38jyf",
     "password": "w1on6cowp8e3gwb3",
     "database": "database_production",
-    "host": "v8rgjd5go210yb4o",
+    "use_env_variables": "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
   }

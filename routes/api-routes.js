@@ -13,7 +13,7 @@ var db = require("../models");
 module.exports = function(app) {
 
  
-  app.get("api/dashboard/:username", function(req, res) {
+  app.get("/api/dashboard/:username", function(req, res) {
     db.weighttracking.findAll({ where: {
       username: req.params.username
     }
